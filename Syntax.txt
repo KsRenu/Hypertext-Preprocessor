@@ -1,0 +1,1120 @@
+
+https://www.w3schools.com/php/php_examples.asp
+
+// This is a single-line comment
+
+# This is also a single-line comment
+
+/*
+This is a multiple-lines comment block
+that spans over multiple
+lines
+*/
+
+====================
+Global and local variables : 
+
+Global : 
+<?php
+$x = 5; // global scope
+ 
+function myTest() {
+  // using x inside this function will generate an error
+  echo "<p>Variable x inside function is: $x</p>";
+} 
+
+Local : 
+<?php
+ // global scope
+ 
+function myTest() {
+	$x = 5;
+  // using x inside this function will generate an error
+  echo "<p>Variable x inside function is: $x</p>";
+} 
+
+Accessing globa var inside fuc : 
+
+<?php
+$x = 5;
+$y = 10;
+
+function myTest() {
+  global $x, $y;
+  $y = $x + $y;
+} 
+
+Static:
+<?php
+function myTest() {
+  static $x = 0;
+  echo $x;
+  $x++;
+}
+
+=================
+Data types:
+Str:
+<?php 
+$x = "Hello world!";
+$y = 'Hello world!';
+
+echo $x;
+
+int/float :
+<?php  
+$x = 5985;
+var_dump($x); #similiar to type()
+?>
+
+array :
+<?php  
+$cars = array("Volvo","BMW","Toyota");
+var_dump($cars);
+?>
+
+object:
+$var=new cls_name(args...);
+
+=============
+if :
+<?php
+$t = date("H");
+
+if ($t < "20") {
+  echo "Have a good day!";
+}
+?>
+
+If-else:
+<?php
+$t = date("H");
+
+if ($t < "20") {
+  echo "Have a good day!";
+} else {
+  echo "Have a good night!";
+}
+?>
+
+else if:
+<?php
+$t = date("H");
+echo "<p>The hour (of the server) is " . $t; 
+echo ", and will give the following message:</p>";
+
+if ($t < "10") {
+  echo "Have a good morning!";
+} elseif ($t < "20") {
+  echo "Have a good day!";
+} else {
+  echo "Have a good night!";
+}
+?>
+
+
+Switch :
+<?php
+$favcolor = "red";
+
+switch ($favcolor) {
+  case "red":
+    echo "Your favorite color is red!";
+    break;
+  case "blue":
+    echo "Your favorite color is blue!";
+    break;
+  case "green":
+    echo "Your favorite color is green!";
+    break;
+  default:
+    echo "Your favorite color is neither red, blue, nor green!";
+}
+?>
+============================
+Loop:
+
+While : 
+<?php  
+$x = 1;
+ 
+while($x <= 5) {
+  echo "The number is: $x <br>";
+  $x++;
+} 
+?>
+
+do-while :
+
+<?php 
+$x = 1;
+
+do {
+  echo "The number is: $x <br>";
+  $x++;
+} while ($x <= 5);
+?>
+
+
+for:
+
+<?php  
+for ($x = 0; $x <= 10; $x++) {
+  echo "The number is: $x <br>";
+}
+?>
+
+
+foreach:
+<?php  
+$colors = array("red", "green", "blue", "yellow"); 
+
+foreach ($colors as $value) {
+  echo "$value <br>";
+}
+?>
+
+=========================================
+Functions : 
+
+func with default arg value:
+<?php
+function setHeight(int $minheight = 50) {
+  echo "The height is : $minheight <br>";
+}
+
+setHeight(350);
+setHeight();
+setHeight(135);
+setHeight(80);
+?>
+
+
+Func that returns a value:
+<?php
+function sum(int $x, int $y) {
+  $z = $x + $y;
+  return $z;
+}
+
+echo "5 + 10 = " . sum(5,10) . "<br>";
+echo "7 + 13 = " . sum(7,13) . "<br>";
+echo "2 + 4 = " . sum(2,4);
+?>
+
+return type declarations:
+
+<?php declare(strict_types=1); // strict requirement
+function addNumbers(float $a, float $b) : float {
+  return $a + $b;
+}
+echo addNumbers(1.2, 5.2); 
+?>
+
+Pass arguments by reference:
+<?php
+function add_five(&$value) {
+  $value += 5;
+}
+
+$num = 2;
+add_five($num);
+echo $num;
+?>
+
+=====================
+
+Class and Objects:
+<?php
+class Fruit {
+  // Properties
+  public $name;
+  public $color;
+
+  // Methods
+  function set_name($name) {
+    $this->name = $name;
+  }
+  function get_name() {
+    return $this->name;
+  }
+}
+
+$apple = new Fruit();
+$banana = new Fruit();
+$apple->set_name('Apple');
+$banana->set_name('Banana');
+
+echo $apple->get_name();
+echo "<br>";
+echo $banana->get_name();
+?>
+
+
+Instance of keyword:
+<?php
+class Fruit {
+  // Properties
+  public $name;
+  public $color;
+
+  // Methods
+  function set_name($name) {
+    $this->name = $name;
+  }
+  function get_name() {
+    return $this->name;
+  }
+}
+
+$apple = new Fruit();
+var_dump($apple instanceof Fruit);
+?>
+
+
+Constructor:
+<?php
+class Fruit {
+  public $name;
+  public $color;
+
+  function __construct($name) {
+    $this->name = $name; 
+  }
+  function get_name() {
+    return $this->name;
+  }
+}
+
+$apple = new Fruit("Apple");
+echo $apple->get_name();
+?>
+
+Destructor:
+<?php
+class Fruit {
+  public $name;
+  public $color;
+
+  function __construct($name) {
+    $this->name = $name; 
+  }
+  function __destruct() {
+    echo "The fruit is {$this->name}."; 
+  }
+}
+
+$apple = new Fruit("Apple");
+?>
+
+Inheritance:
+<?php
+class Fruit {
+  public $name;
+  public $color;
+  public function __construct($name, $color) {
+    $this->name = $name;
+    $this->color = $color; 
+  }
+  public function intro() {
+    echo "The fruit is {$this->name} and the color is {$this->color}."; 
+  }
+}
+
+// Strawberry is inherited from Fruit
+class Strawberry extends Fruit {
+  public function message() {
+    echo "Am I a fruit or a berry? "; 
+  }
+}
+
+$strawberry = new Strawberry("Strawberry", "red");
+$strawberry->message();
+$strawberry->intro();
+?>
+
+
+Class constants:
+class Goodbye {
+  const LEAVING_MESSAGE = "Thank you for visiting W3Schools.com!";
+}
+
+echo Goodbye::LEAVING_MESSAGE;
+?>
+
+
+Abstract class:
+<?php
+abstract class Car {
+  public $name;
+  public function __construct($name) {
+    $this->name = $name;
+  }
+  abstract public function intro() : string; 
+}
+
+// Child classes
+class audi extends Car {
+  public function intro() : string {
+    return "Choose German quality! I'm an $this->name!"; 
+  }
+}
+
+class volvo extends Car {
+  public function intro() : string {
+    return "Proud to be Swedish! I'm a $this->name!"; 
+  }
+}
+
+class citroen extends Car {
+  public function intro() : string {
+    return "French extravagance! I'm a $this->name!"; 
+  }
+}
+
+// Create objects from the child classes
+$audi = new audi("Audi");
+echo $audi->intro();
+echo "<br>";
+
+$volvo = new volvo("Volvo");
+echo $volvo->intro();
+echo "<br>";
+
+$citroen = new citroen("Citroen");
+echo $citroen->intro();
+?>
+
+traits:
+<?php
+trait message1 {
+  public function msg1() {
+    echo "OOP is fun! "; 
+  }
+}
+
+class Welcome {
+  use message1;
+}
+
+$obj = new Welcome();
+$obj->msg1();
+?>
+ 
+Static method:
+<?php
+class greeting {
+  public static function welcome() {
+    echo "Hello World!";
+  }
+}
+
+// Call static method
+greeting::welcome();
+?>
+
+
+<?php
+class pi {
+  public static $value = 3.14159;
+}
+
+// Get static property
+echo pi::$value;
+?>
+ 
+
+==============================
+Select data from MySQL (oop)
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+$dbname = "myDB";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT id, firstname, lastname FROM MyGuests";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo "<br> id: ". $row["id"]. " - Name: ". $row["firstname"]. " " . $row["lastname"] . "<br>";
+    }
+} else {
+    echo "0 results";
+}
+
+$conn->close();
+?>
+
+
+
+Select data from MySQL (Procedural)
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+$dbname = "myDB";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+$sql = "SELECT id, firstname, lastname FROM MyGuests";
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+    // output data of each row
+    while($row = mysqli_fetch_assoc($result)) {
+        echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+    }
+} else {
+    echo "0 results";
+}
+
+mysqli_close($conn);
+?>
+
+
+Plcing result in  php table:
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+$dbname = "myDB";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT id, firstname, lastname FROM MyGuests";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    echo "<table><tr><th>ID</th><th>Name</th></tr>";
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo "<tr><td>" . $row["id"]. "</td><td>" . $row["firstname"]. " " . $row["lastname"]. "</td></tr>";
+    }
+    echo "</table>";
+} else {
+    echo "0 results";
+}
+
+$conn->close();
+?>
+
+Select data with PDO:
+<?php
+echo "<table style='border: solid 1px black;'>";
+ echo "<tr><th>Id</th><th>Firstname</th><th>Lastname</th></tr>";
+
+class TableRows extends RecursiveIteratorIterator {
+    function __construct($it) {
+        parent::__construct($it, self::LEAVES_ONLY);
+    }
+
+    function current() {
+        return "<td style='width: 150px; border: 1px solid black;'>" . parent::current(). "</td>";
+    }
+
+    function beginChildren() {
+        echo "<tr>";
+    }
+
+    function endChildren() {
+        echo "</tr>" . "\n";
+    }
+}
+
+$servername = "localhost";
+$username = "username";
+$password = "password";
+$dbname = "myDBPDO";
+
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $stmt = $conn->prepare("SELECT id, firstname, lastname FROM MyGuests");
+    $stmt->execute();
+
+    // set the resulting array to associative
+    $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+    foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
+        echo $v;
+    }
+}
+catch(PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
+$conn = null;
+echo "</table>";
+?>
+
+===================
+php connect to mysql:
+Example (MySQLi Object-Oriented)
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password);
+
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+echo "Connected successfully";
+?>
+
+
+Example (MySQLi Procedural)
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password);
+
+// Check connection
+if (!$conn) {
+  die("Connection failed: " . mysqli_connect_error());
+}
+echo "Connected successfully";
+?>
+
+
+
+Example (PDO)
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+
+try {
+  $conn = new PDO("mysql:host=$servername;dbname=myDB", $username, $password);
+  // set the PDO error mode to exception
+  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  echo "Connected successfully";
+} catch(PDOException $e) {
+  echo "Connection failed: " . $e->getMessage();
+}
+?>
+
+
+
+To close the connection :
+MySQLi Object-Oriented:
+$conn->close();
+
+MySQLi Procedural:
+mysqli_close($conn);
+
+PDO:
+$conn = null;
+
+=========================================
+php create a db:
+Example (MySQLi Object-oriented)
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password);
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+// Create database
+$sql = "CREATE DATABASE myDB";
+if ($conn->query($sql) === TRUE) {
+  echo "Database created successfully";
+} else {
+  echo "Error creating database: " . $conn->error;
+}
+
+$conn->close();
+?>
+
+
+
+Example (MySQLi Procedural)
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password);
+// Check connection
+if (!$conn) {
+  die("Connection failed: " . mysqli_connect_error());
+}
+
+// Create database
+$sql = "CREATE DATABASE myDB";
+if (mysqli_query($conn, $sql)) {
+  echo "Database created successfully";
+} else {
+  echo "Error creating database: " . mysqli_error($conn);
+}
+
+mysqli_close($conn);
+?>
+
+
+
+
+Example (PDO)
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+
+try {
+  $conn = new PDO("mysql:host=$servername", $username, $password);
+  // set the PDO error mode to exception
+  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  $sql = "CREATE DATABASE myDBPDO";
+  // use exec() because no results are returned
+  $conn->exec($sql);
+  echo "Database created successfully<br>";
+} catch(PDOException $e) {
+  echo $sql . "<br>" . $e->getMessage();
+}
+
+$conn = null;
+?>
+
+
+=====================================
+Create table in db:
+
+CREATE TABLE MyGuests (
+id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+firstname VARCHAR(30) NOT NULL,
+lastname VARCHAR(30) NOT NULL,
+email VARCHAR(50),
+reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)
+
+
+
+Example (MySQLi Object-oriented)
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+$dbname = "myDB";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+// sql to create table
+$sql = "CREATE TABLE MyGuests (
+id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+firstname VARCHAR(30) NOT NULL,
+lastname VARCHAR(30) NOT NULL,
+email VARCHAR(50),
+reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)";
+
+if ($conn->query($sql) === TRUE) {
+  echo "Table MyGuests created successfully";
+} else {
+  echo "Error creating table: " . $conn->error;
+}
+
+$conn->close();
+?>
+
+
+
+Example (MySQLi Procedural)
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+$dbname = "myDB";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+// Check connection
+if (!$conn) {
+  die("Connection failed: " . mysqli_connect_error());
+}
+
+// sql to create table
+$sql = "CREATE TABLE MyGuests (
+id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+firstname VARCHAR(30) NOT NULL,
+lastname VARCHAR(30) NOT NULL,
+email VARCHAR(50),
+reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)";
+
+if (mysqli_query($conn, $sql)) {
+  echo "Table MyGuests created successfully";
+} else {
+  echo "Error creating table: " . mysqli_error($conn);
+}
+
+mysqli_close($conn);
+?>
+
+Example (PDO)
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+$dbname = "myDBPDO";
+
+try {
+  $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+  // set the PDO error mode to exception
+  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+  // sql to create table
+  $sql = "CREATE TABLE MyGuests (
+  id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  firstname VARCHAR(30) NOT NULL,
+  lastname VARCHAR(30) NOT NULL,
+  email VARCHAR(50),
+  reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  )";
+
+  // use exec() because no results are returned
+  $conn->exec($sql);
+  echo "Table MyGuests created successfully";
+} catch(PDOException $e) {
+  echo $sql . "<br>" . $e->getMessage();
+}
+
+$conn = null;
+?>
+
+
+===============================
+
+To insert into table:
+
+INSERT INTO table_name (column1, column2, column3,...)
+VALUES (value1, value2, value3,...)
+
+MYSQLi OOPs:
+$sql = "INSERT INTO MyGuests (firstname, lastname, email)
+VALUES ('John', 'Doe', 'john@example.com')";
+
+if ($conn->query($sql) === TRUE) {
+  echo "New record created successfully";
+} else {
+  echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+$conn->close();
+?>
+
+
+MySQKLi procedural:
+$sql = "INSERT INTO MyGuests (firstname, lastname, email)
+VALUES ('John', 'Doe', 'john@example.com')";
+
+if (mysqli_query($conn, $sql)) {
+  echo "New record created successfully";
+} else {
+  echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+}
+
+mysqli_close($conn);
+?>
+
+
+
+PDO:
+try {
+  $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+  // set the PDO error mode to exception
+  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  $sql = "INSERT INTO MyGuests (firstname, lastname, email)
+  VALUES ('John', 'Doe', 'john@example.com')";
+  // use exec() because no results are returned
+  $conn->exec($sql);
+  echo "New record created successfully";
+} catch(PDOException $e) {
+  echo $sql . "<br>" . $e->getMessage();
+}
+
+$conn = null;
+?>
+
+
+=========================
+
+Prepared Statements and Bound Parameters
+
+
+Example (MySQLi with Prepared Statements)
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+$dbname = "myDB";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+// prepare and bind
+$stmt = $conn->prepare("INSERT INTO MyGuests (firstname, lastname, email) VALUES (?, ?, ?)");
+$stmt->bind_param("sss", $firstname, $lastname, $email);
+
+// set parameters and execute
+$firstname = "John";
+$lastname = "Doe";
+$email = "john@example.com";
+$stmt->execute();
+
+$firstname = "Mary";
+$lastname = "Moe";
+$email = "mary@example.com";
+$stmt->execute();
+
+$firstname = "Julie";
+$lastname = "Dooley";
+$email = "julie@example.com";
+$stmt->execute();
+
+echo "New records created successfully";
+
+$stmt->close();
+$conn->close();
+?>
+
+
+
+==================
+PHP MySQL Select Data
+
+SELECT column_name(s) FROM table_name
+
+Example (MySQLi Object-oriented)
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+$dbname = "myDB";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT id, firstname, lastname FROM MyGuests";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+  }
+} else {
+  echo "0 results";
+}
+$conn->close();
+?>
+
+
+You can also put the result in an HTML table:
+
+Example (MySQLi Object-oriented)
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+$dbname = "myDB";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT id, firstname, lastname FROM MyGuests";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+  echo "<table><tr><th>ID</th><th>Name</th></tr>";
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    echo "<tr><td>".$row["id"]."</td><td>".$row["firstname"]." ".$row["lastname"]."</td></tr>";
+  }
+  echo "</table>";
+} else {
+  echo "0 results";
+}
+$conn->close();
+?>
+
+
+
+=========================================
+Where Clause:
+$sql = "SELECT id, firstname, lastname FROM MyGuests WHERE lastname='Doe'";
+
+=========================================
+Order by:
+SELECT column_name(s) FROM table_name ORDER BY column_name(s) ASC|DESC 
+
+=========================================
+Delete data:
+DELETE FROM table_name
+WHERE some_column = some_value
+
+=========================================
+Update data:
+UPDATE table_name
+SET column1=value, column2=value2,...
+WHERE some_column=some_value
+
+=========================================
+Limit Data Selections From a MySQL Database
+$sql = "SELECT * FROM Orders LIMIT 30";
+
+=========================================
+
+Get and Post methods:
+
+The GET Method
+
+https://www.tutorialspoint.com/php/php_get_post.htm#:~:text=The%20POST%20method%20transfers%20information,as%20well%20as%20binary%20data.
+
+The GET method sends the encoded user information appended to the page request. The page and the encoded information are separated by the ? character.
+
+http://www.test.com/index.htm?name1=value1&name2=value2
+
+Try out following example by putting the source code in test.php script.
+
+<?php
+   if( $_GET["name"] || $_GET["age"] ) {
+      echo "Welcome ". $_GET['name']. "<br />";
+      echo "You are ". $_GET['age']. " years old.";
+      
+      exit();
+   }
+?>
+<html>
+   <body>
+   
+      <form action = "<?php $_PHP_SELF ?>" method = "GET">
+         Name: <input type = "text" name = "name" />
+         Age: <input type = "text" name = "age" />
+         <input type = "submit" />
+      </form>
+      
+   </body>
+</html>
+
+===============================
+
+Post method:
+
+The POST Method
+The POST method transfers information via HTTP headers. The information is encoded as described in case of GET method and put into a header called QUERY_STRING.
+
+The POST method does not have any restriction on data size to be sent.
+
+The POST method can be used to send ASCII as well as binary data.
+
+Try out following example by putting the source code in test.php script.
+
+<?php
+   if( $_POST["name"] || $_POST["age"] ) {
+      if (preg_match("/[^A-Za-z'-]/",$_POST['name'] )) {
+         die ("invalid name and name should be alpha");
+      }
+      echo "Welcome ". $_POST['name']. "<br />";
+      echo "You are ". $_POST['age']. " years old.";
+      
+      exit();
+   }
+?>
+<html>
+   <body>
+   
+      <form action = "<?php $_PHP_SELF ?>" method = "POST">
+         Name: <input type = "text" name = "name" />
+         Age: <input type = "text" name = "age" />
+         <input type = "submit" />
+      </form>
+   
+   </body>
+</html>
+
+
+==========================
+
+The $_REQUEST variable
+
+The PHP $_REQUEST variable contains the contents of both $_GET, $_POST, and $_COOKIE.
+
+Try out following example by putting the source code in test.php script.
+
+<?php
+   if( $_REQUEST["name"] || $_REQUEST["age"] ) {
+      echo "Welcome ". $_REQUEST['name']. "<br />";
+      echo "You are ". $_REQUEST['age']. " years old.";
+      exit();
+   }
+?>
+<html>
+   <body>
+      
+      <form action = "<?php $_PHP_SELF ?>" method = "POST">
+         Name: <input type = "text" name = "name" />
+         Age: <input type = "text" name = "age" />
+         <input type = "submit" />
+      </form>
+      
+   </body>
+</html>
+
+======================
+
+
+
+
+
+
+
+
