@@ -8,8 +8,8 @@ $mail = new PHPMailer();
 $mail->isSMTP();
 $mail->Host = 'smtp.mailtrap.io';
 $mail->SMTPAuth = true;
-$mail->Username = '7e114bbff0574d';
-$mail->Password = 'd4ce9d90ba9604';
+$mail->Username = '';
+$mail->Password = '';
 $mail->SMTPSecure = 'tls';
 $mail->Port = 2525;
 
